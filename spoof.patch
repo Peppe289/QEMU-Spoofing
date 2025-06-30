@@ -1,0 +1,83 @@
+diff --git a/Makefile b/Makefile
+old mode 100644
+new mode 100755
+diff --git a/configure b/configure
+index 2b2b3d6597..633f7bc14d 100755
+--- a/configure
++++ b/configure
+@@ -177,8 +177,8 @@ cpu=""
+ cross_compile="no"
+ cross_prefix=""
+ host_cc="cc"
+-EXTRA_CFLAGS=""
+-EXTRA_CXXFLAGS=""
++EXTRA_CFLAGS="-Wno-error=redundant-decls"
++EXTRA_CXXFLAGS="-Wno-error=redundant-decls"
+ EXTRA_OBJCFLAGS=""
+ EXTRA_LDFLAGS=""
+ 
+diff --git a/hw/acpi/aml-build.c b/hw/acpi/aml-build.c
+index f8f93a9f66..54a01fc3d0 100644
+--- a/hw/acpi/aml-build.c
++++ b/hw/acpi/aml-build.c
+@@ -2345,7 +2345,7 @@ void build_fadt(GArray *tbl, BIOSLinker *linker, const AcpiFadtData *f,
+     }
+ 
+     /* Hypervisor Vendor Identity */
+-    build_append_padded_str(tbl, "QEMU", 8, '\0');
++    build_append_padded_str(tbl, "bruh", 8, '\0');
+ 
+     /* TODO: extra fields need to be added to support revisions above rev6 */
+     assert(f->rev == 6);
+diff --git a/hw/i386/fw_cfg.c b/hw/i386/fw_cfg.c
+index 5c0bcd5f8a..9642198844 100644
+--- a/hw/i386/fw_cfg.c
++++ b/hw/i386/fw_cfg.c
+@@ -228,7 +228,7 @@ void fw_cfg_add_acpi_dsdt(Aml *scope, FWCfgState *fw_cfg)
+     Aml *dev = aml_device("FWCF");
+     Aml *crs = aml_resource_template();
+ 
+-    aml_append(dev, aml_name_decl("_HID", aml_string("QEMU0002")));
++    aml_append(dev, aml_name_decl("_HID", aml_string("BRUH0002")));
+ 
+     /* device present, functioning, decoding, not shown in UI */
+     aml_append(dev, aml_name_decl("_STA", aml_int(0xB)));
+diff --git a/hw/nvram/fw_cfg-acpi.c b/hw/nvram/fw_cfg-acpi.c
+index 2e6ef89b98..4ed5a60e77 100644
+--- a/hw/nvram/fw_cfg-acpi.c
++++ b/hw/nvram/fw_cfg-acpi.c
+@@ -11,7 +11,7 @@
+ void fw_cfg_acpi_dsdt_add(Aml *scope, const MemMapEntry *fw_cfg_memmap)
+ {
+     Aml *dev = aml_device("FWCF");
+-    aml_append(dev, aml_name_decl("_HID", aml_string("QEMU0002")));
++    aml_append(dev, aml_name_decl("_HID", aml_string("BRUH0002")));
+     /* device present, functioning, decoding, not shown in UI */
+     aml_append(dev, aml_name_decl("_STA", aml_int(0xB)));
+     aml_append(dev, aml_name_decl("_CCA", aml_int(1)));
+diff --git a/include/hw/pci/pci.h b/include/hw/pci/pci.h
+index 35d59d7672..b3e2303900 100644
+--- a/include/hw/pci/pci.h
++++ b/include/hw/pci/pci.h
+@@ -79,7 +79,7 @@ extern bool pci_available;
+ /* Red Hat / Qumranet (for QEMU) -- see pci-ids.txt */
+ #define PCI_VENDOR_ID_REDHAT_QUMRANET    0x1af4
+ #define PCI_SUBVENDOR_ID_REDHAT_QUMRANET 0x1af4
+-#define PCI_SUBDEVICE_ID_QEMU            0x1100
++#define PCI_SUBDEVICE_ID_QEMU            0x1110
+ 
+ /* legacy virtio-pci devices */
+ #define PCI_DEVICE_ID_VIRTIO_NET         0x1000
+diff --git a/include/standard-headers/linux/qemu_fw_cfg.h b/include/standard-headers/linux/qemu_fw_cfg.h
+index cb93f6678d..a3828eed7d 100644
+--- a/include/standard-headers/linux/qemu_fw_cfg.h
++++ b/include/standard-headers/linux/qemu_fw_cfg.h
+@@ -4,7 +4,7 @@
+ 
+ #include "standard-headers/linux/types.h"
+ 
+-#define FW_CFG_ACPI_DEVICE_ID	"QEMU0002"
++#define FW_CFG_ACPI_DEVICE_ID	"BRUH0002"
+ 
+ /* selector key values for "well-known" fw_cfg entries */
+ #define FW_CFG_SIGNATURE	0x00
