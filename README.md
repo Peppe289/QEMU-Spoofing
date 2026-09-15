@@ -1,8 +1,8 @@
 # QEMU VM Spoofing for SafeExamBrowser (SEB) on Linux
 
-This project aims to provide a way to run SafeExamBrowser (SEB) on Linux by using QEMU to spoof the system into thinking it is running on a physical machine. The goal is to bypass virtual machine detection in SEB, which is used in exam environments, without resorting to traditional cheating methods.
+⚠️ **Note:** This project is for educational and interoperability purposes only. Please read the full disclaimer at the bottom of this page before using.
 
-Disclaimer: This patch was not developed for cheating purposes, but to prevent people from running Windows from external SSDs during exams. It helps in making SEB less prone to detecting virtual machines, ensuring that users can take exams under controlled conditions.
+This project aims to provide a way to run SafeExamBrowser (SEB) on Linux by using QEMU to spoof the system into thinking it is running on a physical machine. The goal is to bypass virtual machine detection in SEB, which is used in exam environments, without resorting to traditional cheating methods.
 
 ## Why This Repository Exists
 
@@ -86,3 +86,16 @@ Once Windows is installed, shut down the virtual machine and remove the Windows 
 ### Reference
 
 - [SEB VMDetector code](https://github.com/SafeExamBrowser/seb-win-refactoring/blob/master/SafeExamBrowser.Monitoring/VirtualMachineDetector.cs)
+
+
+## DISCLAIMER - FOR EDUCATIONAL AND INTEROPERABILITY PURPOSES ONLY
+
+As stated in the overview, **this patch was not developed for cheating purposes, but to allow users to take exams under controlled conditions via a virtual machine without relying on external SSDs.**
+
+This project was developed exclusively for educational and research purposes, and to enable software interoperability on systems, environments, or platforms for which it was not originally designed.
+
+This tool is not intended to encourage, facilitate, or promote academic dishonesty, cheating, software piracy, copyright infringement, or the illegal circumvention of protections. All rights, trademarks, and copyrights related to the original software (Safe Exam Browser) belong to their respective owners.
+
+Users are strictly advised to use this system only to abide by the rules of their academic institutions in a more accessible way, and to always support the work of the developers.
+
+The author of this project assumes no responsibility for any damages, malfunctions, Terms of Service (TOS) violations, academic penalties, or legal issues arising from the use of this code. The use of this tool is entirely at the end user's own risk.
